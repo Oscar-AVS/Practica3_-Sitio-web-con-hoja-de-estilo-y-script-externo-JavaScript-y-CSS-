@@ -1,0 +1,84 @@
+*{ box-sizing:border-box; margin:0; padding:0 }
+
+body{
+  --bg-url: url("./PACMANWPP.jpg");   
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:system-ui, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
+  color:#092632;
+  position:relative;
+  overflow:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background: var(--bg-url) center/cover no-repeat;
+  opacity: 0.3;            
+  z-index:-1;
+}
+
+body.theme-normal    { --bg-url: url("./PACMANWPP.jpg"); }
+body.theme-frightened{ --bg-url: url("./PACMANWPP(2).jpg"); }
+body.theme-eyes      { --bg-url: url("./PACMANWPP(3).jpg"); }
+body.theme-flashing  { --bg-url: url("./PACMANWPP(4).jpg"); }
+
+.page{
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:20px;
+  width:min(900px,90vw);
+  padding:20px;
+}
+
+h1{
+  font-size:clamp(24px,4vw,44px);
+  text-shadow:0 2px 10px rgba(0,0,0,.8);
+}
+
+.stage{ display:flex; justify-content:center; align-items:center; }
+#ghost{
+  width:320px;
+  height:320px;
+  object-fit:contain;     
+  filter:drop-shadow(0 14px 28px rgba(7, 10, 173, 0.579));
+  transition:transform .18s ease, opacity .18s ease;
+}
+
+.buttons{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:14px;
+}
+.btn{
+  background:rgba(0,0,0,.55);
+  color:#29346a;
+  border:2px solid rgba(255,255,255,.9);
+  border-radius:12px;
+  padding:10px 18px;
+  font-weight:700;
+  letter-spacing:.3px;
+  cursor:pointer;
+  transition:transform .12s ease, box-shadow .12s ease, background .2s ease;
+}
+.btn:hover,.btn:focus-visible{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,.15);
+  box-shadow:0 0 12px rgba(255,255,255,.7);
+  outline:none;
+}
+
+.signature{
+  text-shadow:0 2px 10px rgba(0,0,0,.9);
+  opacity:.95;
+}
+
+@media (max-width:420px){
+  #ghost{ width:260px; height:260px }
+}
